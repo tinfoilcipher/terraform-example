@@ -41,7 +41,7 @@ resource "azurerm_subnet_network_security_group_association" "tinfoil" {
     network_security_group_id = "${azurerm_network_security_group.tinfoil.id}"
 }
 #--Create NICs
-resource "azurerm_network_interface" "nics" {
+resource "azurerm_network_interface" "tinfoil" {
     name                = "${var.linux_vm_nics[count.index]}"
     count               = "${length(var.linux_vms)}"
     location            = "${var.location}"
@@ -53,7 +53,7 @@ resource "azurerm_network_interface" "nics" {
     }
 }
 #--Create Storage Accounts
-resource "azurerm_storage_account" "storage" {
+resource "azurerm_storage_account" "tinfoil" {
     name                     = "${var.storageaccounts[count.index]}"
     resource_group_name      = "${var.resource_groups[2]}"
     location                 = "${var.location}"
@@ -67,7 +67,7 @@ resource "azurerm_virtual_machine" "vms" {
     count                 = "${length(var.linux_vms)}"
     location              = "${var.location}"
     resource_group_name   = "${var.resource_groups[1]}"
-    network_interface_ids = ["${element(azurerm_network_interface.nics.*.id, count.index)}"]
+    network_interface_ids = ["${element(azurerm_network_interface.tinfoil.*.id, count.index)}"]
     vm_size               = "Standard_b1ls"
     storage_image_reference {
         publisher = "Canonical"
