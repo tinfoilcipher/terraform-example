@@ -62,7 +62,7 @@ resource "azurerm_storage_account" "tinfoil" {
     count                    = "${length(var.storageaccounts)}"
 }
 #--Create VMs. Crazy Interpolation on the NIC assignments is utterly essential. Thanks Microsoft
-resource "azurerm_virtual_machine" "vms" {
+resource "azurerm_virtual_machine" "tinfoil" {
     name                  = "${var.linux_vms[count.index]}"
     count                 = "${length(var.linux_vms)}"
     location              = "${var.location}"
