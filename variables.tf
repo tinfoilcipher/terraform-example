@@ -4,18 +4,20 @@
 
 #--Azure Location. Change as appropriate
 variable "location" {
+    type         = string
+    description  = "Location"
     default      = "uksouth"
 }
 
 #--Prompt for your subscription ID
 variable "subscription_id" {
-    type        = "string"
+    type        = string
     description = "Subscription id"
 }
 
 #--Prompt for your Tenant ID
 variable "tenant_id" {
-    type        = "string"
+    type        = string
     description = "Tenant id"
 }
 
@@ -25,23 +27,27 @@ variable "tenant_id" {
 
 #--Prompt for your Client ID
 variable "client_id" {
-    type        = "string"
+    type        = string
     description = "Client id"
 }
 
 #--Prompt for your Client Secret (Service Principle Secret)
 variable "client_secret" {
-    type        = "string"
+    type        = string
     description = "Client secret"
 }
 
 #--OS Admin User (set to something)
 variable "admin_user" {
+    type        = string
+    description = "Admin Username"
     default     = "tinfoiladmin"
 }
 
 #--OS Admin Password (set to something decent, in production you'd really want to look this up from Vault)
 variable "admin_pass" {
+    type        = string
+    description = "Admin Password"
     default     = "Tinfoilpassword12345"
 }
 
@@ -60,13 +66,13 @@ variable "resource_groups" {
 
 variable "vnet" {
     description = "Base vnet"
-    type        = "string"
+    type        = string
     default     = "tinfoil_vnet"
 }
 
 variable "subnet" {
     description = "Base Subnet"
-    type        = "string"
+    type        = string
     default     = "tinfoil_subnet"
 }
 
